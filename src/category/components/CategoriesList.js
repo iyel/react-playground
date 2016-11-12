@@ -2,7 +2,7 @@ import React, { PureComponent, PropTypes } from 'react';
 
 import Toolbar from '../../toolbar/Toolbar';
 
-class Categories extends PureComponent {
+class CategoriesList extends PureComponent {
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.object).isRequired,
     removeCategories: PropTypes.func.isRequired,
@@ -58,24 +58,25 @@ class Categories extends PureComponent {
             removeItem={this.removeItem}
           />
         </div>
-
-        {this.props.categories.map(cat =>
-          <div key={cat.id} className="form-check">
-            <label htmlFor={cat.id} className="form-check-label">
-              <input
-                id={cat.id}
-                className="form-check-input"
-                type="checkbox"
-                value={cat.id}
-                onChange={this.onCheckbox}
-                checked={~this.state.selected.indexOf(cat.id)}
-              /> {cat.name}
-            </label>
-          </div>
-        )}
+        <div id="categories-list">
+          {this.props.categories.map(cat =>
+            <div key={cat.id} className="form-check">
+              <label htmlFor={cat.id} className="form-check-label">
+                <input
+                  id={cat.id}
+                  className="form-check-input"
+                  type="checkbox"
+                  value={cat.id}
+                  onChange={this.onCheckbox}
+                  checked={~this.state.selected.indexOf(cat.id)}
+                /> {cat.name}
+              </label>
+            </div>
+          )}
+        </div>
       </div>
     );
   }
 }
 
-export default Categories;
+export default CategoriesList;
