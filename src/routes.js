@@ -6,7 +6,7 @@ import CategoriesListPage from './category/CategoriesListPage';
 import CategoryPage from './category/CategoryPage';
 import LocationPage from './locations/LocationPage';
 import LocationsListPage from './locations/LocationsListPage';
-import NotFoundPage from './NotFoundPage'
+import NotFoundPage from './NotFoundPage';
 
 
 export default (

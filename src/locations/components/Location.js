@@ -21,9 +21,9 @@ export default class Location extends Component {
   handleMultipleSelect(event) {
     const options = event.target.options;
     const categories = [];
-    Array.from(options).forEach(o => (o.selected ? categories.push(o.value) : false) );
+    Array.from(options).forEach(o => (o.selected ? categories.push(o.value) : false));
 
-    this.setState({ location: { ...this.state.location, categories } })
+    this.setState({ location: { ...this.state.location, categories } });
   }
 
   handleSubmit(event) {
@@ -37,7 +37,7 @@ export default class Location extends Component {
       this.setState({ validation: { name: true } });
       return true;
     } else {
-      this.setState({ validation: { name: false } })
+      this.setState({ validation: { name: false } });
     }
 
     if (address.length < 1
@@ -69,9 +69,9 @@ export default class Location extends Component {
           <dt className="col-sm-2">categories</dt>
           <dd className="col-sm-10">
             {this.state.location.categories.map(cId =>
-                <span key="cId">
-                  {this.props.categories.find(c => c.id === cId)['name']}
-                </span>
+              <span key="cId">
+                {this.props.categories.find(c => c.id === cId).name}
+              </span>,
               )
             }
           </dd>
@@ -147,7 +147,7 @@ export default class Location extends Component {
               value={this.state.location.categories}
             >
               {this.props.categories.map(c =>
-                <option key={c.id} value={c.id}>{c.name}</option>
+                <option key={c.id} value={c.id}>{c.name}</option>,
               )}
             </select>
           </div>

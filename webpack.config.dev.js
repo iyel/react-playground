@@ -38,10 +38,7 @@ export default {
       },
       inject: true,
     }),
-    // new BundleAnalyzerPlugin({
-    //   // Port that will be used by in `server` mode to start HTTP server. 
-    //   analyzerPort: 4000,
-    // }),
+    // new BundleAnalyzerPlugin({}),
   ],
   module: {
     loaders: [

@@ -1,6 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export default class Category extends Component {
+  static propTypes = {
+    categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+    route: PropTypes.shape({
+      mode: PropTypes.string.isRequired,
+    }),
+    router: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+    }),
+  }
+
   constructor(props) {
     super(props);
 
@@ -13,7 +26,7 @@ export default class Category extends Component {
   }
 
   handleChange(event) {
-    this.setState({ category: {...this.state.category, name: event.target.value } });
+    this.setState({ category: { ...this.state.category, name: event.target.value } });
   }
 
   handleSubmit(event) {

@@ -9,7 +9,7 @@ export default function category(state = { data: [] }, action) {
       };
     case actions.CATEGORY_UPDATE:
       const nextStateData = JSON.parse(JSON.stringify(state.data));
-      nextStateData.find(d => d.id === action.payload.id)['name'] = action.payload.name;
+      nextStateData.find(d => d.id === action.payload.id).name = action.payload.name;
       return {
         ...state,
         data: nextStateData,

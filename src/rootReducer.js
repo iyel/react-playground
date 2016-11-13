@@ -5,10 +5,10 @@ import locations from './locations/locations.reducer';
 import storage from './storage/storage.reducer';
 
 const rootReducer = combineReducers({
-	categories,
+  categories,
   locations,
   storage,
-	routing: routerReducer,
+  routing: routerReducer,
 });
 
 export default rootReducer;

@@ -45,16 +45,16 @@ const Navbar = () => {
     <div >
       {svg}
       <nav className="nav nav-inline">
-        <Link to="/locations" className="nav-link" activeClassName='active'>
+        <Link to="/locations" className="nav-link" activeClassName="active">
           <svg className="icon icon-location">
-            <use xlinkHref="#icon-location"></use>
+            <use xlinkHref="#icon-location" />
           </svg>{ ' ' }
           Locations
         </Link>
         { ' ' }
-        <Link to="/" className="nav-link" activeClassName='active'>
+        <Link to="/" className="nav-link" activeClassName="active">
           <svg className="icon icon-books">
-            <use xlinkHref="#icon-books"></use>
+            <use xlinkHref="#icon-books" />
           </svg>{ ' ' }
           Categories
         </Link>

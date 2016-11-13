@@ -7,17 +7,15 @@ export default function locations(state = { data: [] }, action) {
         ...state,
         data: [...state.data, action.payload],
       };
-    case actions.LOCATION_UPDATE:
-      const nextStateData = JSON.parse(JSON.stringify(state.data));
-      const loc = nextStateData.find(d => d.id === action.payload.id);
-      loc.name = action.payload.name;
-      loc.address = action.payload.address;
-      loc.coordinates = action.payload.coordinates;
-      loc.categories = action.payload.categories;
+    case actions.LOCATION_UPDATE: {
+      const nextData = JSON.parse(JSON.stringify(state.data));
+      const loc = nextData.find(d => d.id === action.payload.id);
+      Object.assign(loc, action.payload);
       return {
         ...state,
-        data: nextStateData,
+        data: nextData,
       };
+    }
     case actions.LOCATION_DELETE:
       return {
         ...state,

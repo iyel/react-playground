@@ -5,6 +5,7 @@ import Toolbar from '../../toolbar/Toolbar';
 class CategoriesList extends PureComponent {
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+    locations: PropTypes.arrayOf(PropTypes.object).isRequired,
     removeCategories: PropTypes.func.isRequired,
   }
 
@@ -34,14 +35,14 @@ class CategoriesList extends PureComponent {
   }
 
   removeItem() {
-    const isLocationUsed = this.props.locations.some(l => {
-      return l.categories.some(c => this.state.selected.indexOf(c) >= 0)
-    });
+    const isLocationUsed = this.props.locations.some(l =>
+       l.categories.some(c => this.state.selected.indexOf(c) >= 0),
+    );
 
-    if(!isLocationUsed) {
+    if (!isLocationUsed) {
       this.props.removeCategories(this.state.selected);
     } else {
-      alert('Can not delete. Category is used...')
+      alert('Can not delete. Category is used...');
       console.error('Location used');
     }
   }
@@ -71,7 +72,7 @@ class CategoriesList extends PureComponent {
                   checked={~this.state.selected.indexOf(cat.id)}
                 /> {cat.name}
               </label>
-            </div>
+            </div>,
           )}
         </div>
       </div>

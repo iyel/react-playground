@@ -43,7 +43,7 @@ export default class LocationsList extends PureComponent {
     if (~selected.indexOf(id)) {
       this.setState({ selected: selected.filter(s => s !== id) });
     } else {
-      this.setState({ selected: [...selected, id]})
+      this.setState({ selected: [...selected, id] });
     }
   }
 
@@ -66,31 +66,31 @@ export default class LocationsList extends PureComponent {
         </div>
 
         <div className="list-group">
-        {this.props.locations
+          {this.props.locations
           .slice()
           .sort((a, b) => (a.name > b.name ? 1 : -1))
-          .filter(l => {
+          .filter((l) => {
             if (this.state.filter.length > 0) {
-              return l.categories.some(cId => this.state.filter.map(f => f.id).indexOf(cId) >= 0)
+              return l.categories.some(cId => this.state.filter.map(f => f.id).indexOf(cId) >= 0);
             }
-            return true
+            return true;
           })
           .map(loc =>
             <div key={loc.id} className="form-check">
-                <span className="list-group-item list-group-item-action">
-                  <label className="form-check-label">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value={loc.id}
-                      onChange={this.handleCheckbox}
-                      checked={~this.state.selected.indexOf(loc.id) ? true : false}
-                    />
-                    <h5 className="list-group-item-heading">{loc.name}</h5>
-                    <p className="list-group-item-text">{loc.address}</p>
-                  </label>
-                </span>
-            </div>
+              <span className="list-group-item list-group-item-action">
+                <label className="form-check-label">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value={loc.id}
+                    onChange={this.handleCheckbox}
+                    checked={~this.state.selected.indexOf(loc.id) ? true : false}
+                  />
+                  <h5 className="list-group-item-heading">{loc.name}</h5>
+                  <p className="list-group-item-text">{loc.address}</p>
+                </label>
+              </span>
+            </div>,
           )
         }
         </div>
