@@ -17,7 +17,7 @@ const Toolbar = ({ itemIds = [], type, removeItem }) => (
       className={classNames('nav-link', { disabled: itemIds.length !== 1 })}
     >Edit</Link>
     <a
-      href="#"
+      href="#removeItems"
       role="button"
       className={classNames('nav-link', { disabled: itemIds.length < 1 })}
       onClick={() => removeItem()}

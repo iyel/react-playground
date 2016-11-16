@@ -26,7 +26,8 @@ export default function configureStore() {
   const store = createStore(rootReducer, compose(
       applyMiddleware(...middlewares),
       autoRehydrate(),
-      window.devToolsExtension ? window.devToolsExtension() : f => f, // add support for Redux dev tools
+      // add support for Redux dev tools
+      window.devToolsExtension ? window.devToolsExtension() : f => f,
     ),
   );
 

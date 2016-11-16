@@ -5,6 +5,7 @@ import NavBar from './navbar/NavBar';
 import '../node_modules/bootstrap/dist/css/bootstrap-flex.css';
 import '../node_modules/react-select/dist/react-select.css';
 
+/* eslint-disable react/prefer-stateless-function */
 class App extends PureComponent {
   static propTypes = {
     children: PropTypes.element,

@@ -19,7 +19,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 0,
     'import/no-extraneous-dependencies': ['error', {
-      'devDependencies': ['**/*.test.js', '**/*.spec.js', 'webpack.config.*', 'tools/*']
+      'devDependencies': ['**/*.test.js', '**/*.spec.js', 'webpack.config.*', '**/*.dev.js', 'tools/*']
     }],
     'no-bitwise': ['error', { 'allow': ['~'] }]
   },

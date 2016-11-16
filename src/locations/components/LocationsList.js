@@ -1,10 +1,15 @@
-import React, { PureComponent } from 'react';
-import { Link } from 'react-router';
+import React, { PureComponent, PropTypes } from 'react';
 import Select from 'react-select';
 
 import Toolbar from '../../toolbar/Toolbar';
 
 export default class LocationsList extends PureComponent {
+  static propTypes = {
+    categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+    locations: PropTypes.arrayOf(PropTypes.object).isRequired,
+    removeLocations: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
     this.state = { filter: [], selected: [] };
@@ -15,6 +20,20 @@ export default class LocationsList extends PureComponent {
 
   handleFilter(value) {
     this.setState({ filter: value });
+  }
+
+  handleCheckbox(event) {
+    const id = event.target.value;
+    const selected = this.state.selected;
+    if (~selected.indexOf(id)) {
+      this.setState({ selected: selected.filter(s => s !== id) });
+    } else {
+      this.setState({ selected: [...selected, id] });
+    }
+  }
+
+  removeItem() {
+    this.props.removeLocations(this.state.selected);
   }
 
   renderFilter() {
@@ -32,19 +51,6 @@ export default class LocationsList extends PureComponent {
         />
       </div>
     );
-  }
-
-  removeItem() {
-    this.props.removeLocations(this.state.selected);
-  }
-  handleCheckbox(event) {
-    const id = event.target.value;
-    const selected = this.state.selected;
-    if (~selected.indexOf(id)) {
-      this.setState({ selected: selected.filter(s => s !== id) });
-    } else {
-      this.setState({ selected: [...selected, id] });
-    }
   }
 
   render() {
@@ -78,13 +84,14 @@ export default class LocationsList extends PureComponent {
           .map(loc =>
             <div key={loc.id} className="form-check">
               <span className="list-group-item list-group-item-action">
-                <label className="form-check-label">
+                <label htmlFor={loc.id} className="form-check-label">
                   <input
+                    id={loc.id}
                     className="form-check-input"
                     type="checkbox"
                     value={loc.id}
                     onChange={this.handleCheckbox}
-                    checked={~this.state.selected.indexOf(loc.id) ? true : false}
+                    checked={~this.state.selected.indexOf(loc.id)}
                   />
                   <h5 className="list-group-item-heading">{loc.name}</h5>
                   <p className="list-group-item-text">{loc.address}</p>

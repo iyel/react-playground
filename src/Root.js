@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 
@@ -10,6 +10,7 @@ const Root = ({ store, history }) => (
   </Provider>
 );
 
+/* eslint-disable react/forbid-prop-types */
 Root.propTypes = {
   store: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,

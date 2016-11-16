@@ -1,7 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 
 export default class Location extends Component {
+  static propTypes = {
+    locations: PropTypes.arrayOf(PropTypes.object).isRequired,
+    categories: PropTypes.arrayOf(PropTypes.object).isRequired,
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+    route: PropTypes.shape({
+      mode: PropTypes.string.isRequired,
+    }),
+    router: PropTypes.shape({
+      push: PropTypes.func.isRequired,
+    }),
+  }
+
   constructor(props) {
     super(props);
     const locationEmpty = { name: '', address: '', coordinates: '', categories: [] };
@@ -15,7 +29,10 @@ export default class Location extends Component {
   }
 
   handleChange(event) {
-    this.setState({ location: { ...this.state.location, [event.target.name]: event.target.value } });
+    this.setState({ location: {
+      ...this.state.location,
+      [event.target.name]: event.target.value,
+    } });
   }
 
   handleMultipleSelect(event) {
@@ -36,9 +53,9 @@ export default class Location extends Component {
     if (name.length < 1) {
       this.setState({ validation: { name: true } });
       return true;
-    } else {
-      this.setState({ validation: { name: false } });
     }
+
+    this.setState({ validation: { name: false } });
 
     if (address.length < 1
         || coordinates.length < 1
