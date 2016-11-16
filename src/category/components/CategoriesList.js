@@ -43,7 +43,7 @@ class CategoriesList extends PureComponent {
       this.props.removeCategories(this.state.selected);
     } else {
       alert('Can not delete. Category is used...');
-      console.error('Location used');
+      console.error('Category is used in some of locations');
     }
   }
 
